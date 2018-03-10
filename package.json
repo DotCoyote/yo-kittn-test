@@ -12,10 +12,10 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production npm run subtask:bundlewebpack",
     "deploy": "npm run build",
-    "dev": "webpack-dev-server --config=webpack/webpack.dev.babel.js --mode development",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/webpack.dev.babel.js --mode development",
     "init": "npm run build",
     "stylelint": "stylelint 'src/style/**/**/*.scss'",
-    "subtask:bundlewebpack": "webpack --config=webpack/webpack.config.babel.js -p --colors --mode production",
+    "subtask:bundlewebpack": "cross-env NODE_ENV=production webpack --config=webpack/webpack.config.babel.js -p --colors --mode production",
     "webpack:analyze": "webpack-bundle-analyzer webpack/stats.json dist/assets/"
   },
   "dependencies": {

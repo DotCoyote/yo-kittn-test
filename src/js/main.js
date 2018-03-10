@@ -10,7 +10,7 @@ import './partial/kittnad' // Small Advertising for Kittn :)
 import './partial/modernizer-loader'
 import './partial/detect-browser'
 import './partial/disable-pointerevents'
-import App from './app'
+import App from './app.vue'
 
 // keep vue-router and vuex store in sync
 sync(store, router)
