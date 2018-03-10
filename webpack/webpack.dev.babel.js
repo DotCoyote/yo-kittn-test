@@ -61,7 +61,7 @@ const devWebpackConfig = merge(baseWebpackConfig.default, {
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].css'),
       allChunks: true
-    })
+    }),
     // new WriteFilePlugin({
     //   log: false,
     //   test: /^(?!.+(?:hot-update.(js|json))).+$/

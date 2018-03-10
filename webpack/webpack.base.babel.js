@@ -139,8 +139,8 @@ export default {
         test: /\.(eot|ttf|woff|woff2)(\?\S*)?$/,
         loader: 'file-loader',
         query: {
-          outputPath: 'fonts/',
-          publicPath: utils.assetsPath('fonts/'),
+          outputPath: utils.assetsPath('fonts/'),
+          publicPath: 'fonts/',
           name: '[name].[ext]'
         }
       },
