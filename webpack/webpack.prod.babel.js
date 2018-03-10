@@ -3,6 +3,7 @@ import path from 'path'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin'
+import StylelintPlugin from 'stylelint-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 const utils = require('./utils')
 const baseWebpackConfig = require('./webpack.base.babel.js')
@@ -29,6 +30,14 @@ const prodWebpackConfig = merge(baseWebpackConfig.default, {
         exclude: ['ls.respimg.js', 'modernizr.js']
       }
     ),
+    new StylelintPlugin({
+      context: utils.paths.LOADER_PATH,
+      syntax: 'scss'
+    }),
+    new StylelintPlugin({
+      context: utils.paths.CSS_ROOT,
+      syntax: 'scss'
+    }),
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[chunkhash].css'),
       allChunks: true

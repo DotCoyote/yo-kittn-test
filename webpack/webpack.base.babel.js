@@ -7,7 +7,6 @@
 import path from 'path'
 import webpack from 'webpack'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
-import StylelintPlugin from 'stylelint-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 const utils = require('./utils')
 
@@ -72,6 +71,7 @@ export default {
     ],
     modules: [utils.resolve(utils.kittnConf.src.base), utils.resolve('node_modules')],
     alias: {
+      icons: path.resolve(utils.paths.SRC_ROOT, 'images/vectors/'),
       components: path.resolve(utils.paths.LOADER_PATH, 'components/'),
       store: path.resolve(utils.paths.LOADER_PATH, 'store'),
       src: utils.resolve(utils.kittnConf.src.base)
@@ -165,12 +165,6 @@ export default {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    // ifProduction(
-    //   new StylelintPlugin({
-    //     context: LOADER_PATH,
-    //     syntax: 'scss'
-    //   })
-    // ),
     new HtmlWebpackPlugin({
       template: utils.kittnConf.src.structure + 'index.html',
       filename: 'index.html',

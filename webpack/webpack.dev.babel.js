@@ -62,6 +62,7 @@ const devWebpackConfig = merge(baseWebpackConfig.default, {
       filename: utils.assetsPath('css/[name].css'),
       allChunks: true
     }),
+    // only needed if you want to write the files to your harddrive in dev-mode
     // new WriteFilePlugin({
     //   log: false,
     //   test: /^(?!.+(?:hot-update.(js|json))).+$/
