@@ -10,15 +10,17 @@ import './partial/kittnad' // Small Advertising for Kittn :)
 import './partial/modernizer-loader'
 import './partial/detect-browser'
 import './partial/disable-pointerevents'
-import App from './app.vue'
 
 // keep vue-router and vuex store in sync
 sync(store, router)
-// Vue App
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  store,
-  render: (h) => h(App)
-})
+
+import('./app')
+  .then((App) => {
+    /* eslint-disable no-new */
+    new Vue({
+      el: '#app',
+      router,
+      store,
+      render: (h) => h(App.default)
+    })
+  })

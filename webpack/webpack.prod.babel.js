@@ -1,25 +1,11 @@
 const merge = require('webpack-merge')
+import path from 'path'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import OptimizeCSSPlugin from 'optimize-css-assets-webpack-plugin'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+const utils = require('./utils')
 const baseWebpackConfig = require('./webpack.base.babel.js')
-
-/*
- |--------------------------------------------------------------------------
- | Help
- |--------------------------------------------------------------------------
- */
-export function assetsPath(_path) {
-  return path.posix.join(ASSETS_PATH, _path);
-}
-
-/*
- |--------------------------------------------------------------------------
- | Setting some paths for our Application
- |--------------------------------------------------------------------------
- */
-export const ROOT_PATH = path.resolve(__dirname, '..')
 
 /*
  |--------------------------------------------------------------------------
@@ -28,13 +14,14 @@ export const ROOT_PATH = path.resolve(__dirname, '..')
  */
 const prodWebpackConfig = merge(baseWebpackConfig.default, {
   output: {
-    filename: assetsPath('js/[name].[hash].js'),
+    filename: utils.assetsPath('js/[name].[hash].js'),
+    publicPath: './'
   },
   plugins: [
     new CleanWebpackPlugin(
       [
-        utils.kittnConf.dist.js,
-        utils.kittnConf.dist.css
+        utils.resolve(utils.kittnConf.dist.js),
+        utils.resolve(utils.kittnConf.dist.css)
       ],
       {
         root: utils.paths.PUBLIC_PATH,
@@ -54,7 +41,7 @@ const prodWebpackConfig = merge(baseWebpackConfig.default, {
     new BundleAnalyzerPlugin({
       analyzerMode: 'disabled',
       generateStatsFile: true,
-      statsFilename: `${ROOT_PATH}/webpack/stats.json`,
+      statsFilename: `${utils.paths.ROOT_PATH}/webpack/stats.json`,
       logLevel: 'info'
     })
   ]

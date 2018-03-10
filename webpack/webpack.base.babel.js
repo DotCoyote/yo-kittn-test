@@ -59,9 +59,8 @@ export default {
   entry: utils.removeEmpty(utils.entryPoints),
   output: {
     path: utils.paths.PUBLIC_PATH,
-    publicPath: '/',
     filename: utils.assetsPath('js/[name].[hash].js'),
-    chunkFilename: utils.assetsPath('js/[name].[hash].js')
+    chunkFilename: utils.assetsPath('js/chunks/[name].[hash].js')
   },
   externals: {
     Modernizr: 'Modernizr'

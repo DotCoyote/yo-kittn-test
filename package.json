@@ -10,12 +10,11 @@
   },
   "repository": "",
   "scripts": {
-    "build": "cross-env NODE_ENV=production npm run subtask:bundlewebpack",
+    "build": "cross-env NODE_ENV=production webpack --config=webpack/webpack.prod.babel.js -p --colors --mode production",
     "deploy": "npm run build",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config=webpack/webpack.dev.babel.js --mode development",
     "init": "npm run build",
     "stylelint": "stylelint 'src/style/**/**/*.scss'",
-    "subtask:bundlewebpack": "cross-env NODE_ENV=production webpack --config=webpack/webpack.config.babel.js -p --colors --mode production",
     "webpack:analyze": "webpack-bundle-analyzer webpack/stats.json dist/assets/"
   },
   "dependencies": {
